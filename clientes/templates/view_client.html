@@ -1,0 +1,41 @@
+{% extends "Principal.html" %}
+
+{% block title %} Ver Pacientes {% endblock %}
+
+{% block content %}
+    {% if entradas %}
+        <p>
+            Entradas Encontradas: {{entradas|length}} Pacientes
+        </p>
+
+        <table border="1">
+            <caption>Pacientes</caption>
+            <tr>
+                <th>ID_PACIENTE</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Peso</th>
+                <th>Altura</th>
+            </tr>
+            {% for entrada in entradas %}
+            <tr>
+                <td>{{entrada.id}}</td>
+                <td> {{entrada.nombre}} </td>
+                <td>{{entrada.edad}}</td>
+                <td>{{entrada.peso}}</td>
+                <td>{{entrada.altura}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No hay registros</p>
+    {% endif %}
+    <form method='POST' action=''>
+        {% csrf_token %}
+        <button type="submit">Borrar Registros</button>
+    </form>
+    <form method="GET" action="/agregar_cliente/">
+        <button type="submit">Agregar Cliente</button>
+    </form>
+    
+{% endblock %}

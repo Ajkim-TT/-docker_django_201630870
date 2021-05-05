@@ -1,0 +1,21 @@
+{% extends "Principal.html" %}
+
+{% block title %} Agregar Citas {% endblock %}
+
+{% block content %}
+    <body>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{forms.paciente}}
+            <br>
+            mm/dd/aaaa
+            {{forms.fechayhora}}
+            <input type="submit" name="Agregar Cita">
+        </form>
+        {% for message in messages %}
+				<p id = 'messages'>{{message}}</p>		
+		{% endfor %}
+        <form method="GET" action="/ver_cita/">
+            <button type="submit">Ver Citas</button>
+        </form>
+{% endblock %}

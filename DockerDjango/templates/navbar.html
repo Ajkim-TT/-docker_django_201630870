@@ -1,0 +1,36 @@
+<html>
+    <style type="text/css">
+
+    </style>
+    <body>
+        <div id="header">
+            <ul class="menu">
+                <li><a href="{% url 'principal' %}">Inicio</a> </li>
+                <li><a href="">Aereolinea</a>
+                    <ul>
+                        <li><a href="{% url 'Orden' %}">Vuelos</a>  </li>
+                        <li><a href="{% url 'Historial' %}">Facturas</a> </li>
+                    </ul>
+                </li>
+                <li><a href="">Clínica</a>
+                    <ul>
+                        <li><a href="">Clientes</a>
+                            <ul>
+                                <li><a href="{% url 'add_cliente' %}"> Agregar </a></li>
+                                <li><a href="{% url 'view_cliente' %}"> Ver </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Citas</a>
+                            <ul>
+                                <li><a href="{% url 'add_appointment' %}"> Agregar </a></li>
+                                <li><a href="{% url 'view_appointment' %}"> Ver </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><p>Bienvenido {{request.user}} </p></li>
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

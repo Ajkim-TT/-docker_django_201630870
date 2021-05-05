@@ -1,0 +1,44 @@
+{% extends "Principal.html" %}
+
+{% block title %} Ver Citas {% endblock %}
+
+{% block content %}
+        {% if entradas %}
+            <p>
+                Entradas Encontradas: {{entradas|length}} Citas
+            </p>
+
+            <table border="1">
+                <caption>Citas</caption>
+                <tr>
+                    <th>ID_CITA</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                </tr>
+                {% for entrada in entradas %}
+                <tr>
+                    <td>{{entrada.id}}</td>
+                    <td> {{entrada.paciente}} </td>
+                    <td>{{entrada.fechayhora}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No hay registros</p>
+        {% endif %}
+        <form method="POST" action=''>
+            {% csrf_token %}
+            <h5>BUSCAR CITA</h5>
+            <input type="date" id="fecha" name="fecha" min="2021-01-01" max="2022-12-31" required>
+            <button type="submit">Buscar Cita</button>
+        </form>
+
+        <form method='POST' action=''>
+            {% csrf_token %}
+            <button type="submit">Borrar Registros</button>
+        </form>
+
+        <form method="GET" action="/agregar_cita/">
+            <button type="submit">Agregar Cita</button>
+        </form>
+{% endblock %}
